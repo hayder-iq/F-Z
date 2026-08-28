@@ -1,0 +1,45 @@
+/* FLASH ZOON — shared identity layer
+   UI only. Operational JS/BIN/payload files are untouched. */
+:root{--fz-bg-image:url('background.png')}
+/* FLASH ZOON — shared visual identity layer
+   Applied to every HTML page. Does not replace exploit logic. */
+:root{
+  --fz-bg:#050505; --fz-panel:rgba(10,10,10,.94); --fz-orange:#ff7a00;
+  --fz-orange-soft:#ff9d35; --fz-text:#f5f5f5; --fz-muted:#a7a7a7;
+  --fz-line:rgba(255,122,0,.42); --fz-shadow:rgba(255,122,0,.18);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#050505!important;color:var(--fz-text)!important;font-family:"Segoe UI",Tahoma,Arial,sans-serif;}
+body{position:relative;overflow-x:hidden;}
+body::before{content:"";position:fixed;inset:0;background-image:var(--fz-bg-image);background-size:cover;background-position:center;background-repeat:no-repeat;opacity:.78;filter:brightness(.56) contrast(1.06);z-index:0;pointer-events:none}
+body::after{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.14),rgba(0,0,0,.48) 80%,rgba(0,0,0,.62));z-index:0;pointer-events:none}
+body>*{position:relative;z-index:1}
+#wrap,#container,.container,.main-layout{max-width:980px;width:min(94vw,980px);margin:0 auto;padding:18px 18px 28px;background:transparent!important}
+#header,#main-header,.header-section,.brand{position:relative;overflow:hidden}
+#header,#main-header{background:linear-gradient(180deg,rgba(18,18,18,.96),rgba(8,8,8,.96))!important;border:1px solid var(--fz-line)!important;border-radius:22px!important;padding:26px 22px 22px!important;margin:0 auto 18px!important;text-align:center;box-shadow:0 16px 38px rgba(0,0,0,.5),0 0 24px var(--fz-shadow)!important}
+#header::before,#main-header::before{content:"";position:absolute;top:0;left:9%;right:9%;height:2px;background:var(--fz-orange);box-shadow:0 0 12px rgba(255,122,0,.65)}
+#header h1,#main-header h1,.main-title,h1{font-size:clamp(42px,7vw,72px)!important;line-height:1!important;font-weight:900!important;color:#fff!important;margin:0 0 10px!important;letter-spacing:-1px!important;text-shadow:0 0 18px rgba(255,122,0,.16)!important}
+#header .english-name,.brand,#brand b{font-size:clamp(18px,3vw,28px)!important;letter-spacing:5px!important;font-weight:800!important;color:var(--fz-orange)!important;margin:0 0 12px!important;text-shadow:none!important}
+#header .sub,#main-header .sub,.sub{font-size:18px!important;line-height:1.35!important;color:#d8d8d8!important;font-weight:600!important;text-shadow:none!important}
+#header .sub span,#main-header .sub span{color:#fff!important}
+.neon-line,.line{height:1px!important;width:58%!important;margin:18px auto!important;background:linear-gradient(90deg,transparent,var(--fz-orange),transparent)!important;box-shadow:0 0 10px rgba(255,122,0,.42)!important}
+#header .phone,.phones{font-size:16px!important;line-height:1.4!important;color:#eee!important;direction:ltr;letter-spacing:1px!important;margin:6px 0 0!important;text-shadow:none!important}
+#header .phone{display:inline-block;padding:7px 14px!important;border:1px solid rgba(255,122,0,.35)!important;border-radius:999px!important;background:rgba(255,122,0,.06)!important;box-shadow:none!important}
+#header .phone::after{content:"GAME ZONE  •  PS4";display:block;color:var(--fz-orange);font-size:12px;letter-spacing:2px;margin-top:6px}
+#state,#status,.card,#det,#details,#cache,#console,.main-layout,.btn-container,#kernel-options,.autoJb{background:linear-gradient(180deg,rgba(17,17,17,.96),rgba(8,8,8,.96))!important;border:1px solid rgba(255,122,0,.28)!important;box-shadow:0 12px 30px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.04)!important;border-radius:16px!important;color:#fff!important}
+#state,#status{font-size:20px!important;font-weight:800!important;padding:14px 16px!important;text-align:center!important;text-shadow:none!important}
+#det,#details,#cache{font-size:14px!important;color:#bdbdbd!important;padding:10px 12px!important;margin-top:8px!important}
+#det b{color:#fff!important}
+#cache.cacheok{color:#79d9a6!important;border-color:rgba(80,200,130,.2)!important}
+.loader,.loader-dot,.loader-dots span,.loading span{box-shadow:0 0 10px rgba(255,122,0,.45)!important}
+.loader{border-top-color:var(--fz-orange)!important;border-right-color:var(--fz-orange-soft)!important}
+.loader-dot,.loader-dots span,.loading span{background:var(--fz-orange)!important}
+.loader.done{border-color:#5bd493!important;box-shadow:0 0 12px rgba(91,212,147,.5)!important}
+.loading{margin-top:18px!important;height:5px!important;background:#222!important;border-radius:5px!important;overflow:hidden!important}
+button,label,.btn-container label{color:#fff!important}
+button{background:#151515!important;border:1px solid rgba(255,122,0,.45)!important;border-radius:10px!important;padding:10px 16px!important}
+input[type=radio]:checked+label,input[type=checkbox]:checked+label{color:var(--fz-orange)!important}
+.footer,.footer-brand{color:#666!important;text-shadow:none!important}
+#result,#user-agent{display:none}
+pre#console{white-space:pre-wrap!important;min-height:120px;padding:14px!important;overflow:auto!important;font:13px/1.5 Consolas,"Courier New",monospace!important}
+@media (max-width:640px){#wrap,#container,.container,.main-layout{width:96vw;padding:12px 10px 20px!important}#header,#main-header{padding:22px 14px 20px!important;border-radius:18px!important}#header h1,#main-header h1,h1{font-size:40px!important}.phones,#header .phone{font-size:13px!important}.sub{font-size:16px!important}}

@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "missing_html_refs": [],
+  "changed_operational_files": [],
+  "extra_operational_files": [],
+  "pages_updated": [
+    "index.html",
+    "505_960/index.html",
+    "505_960/cache.html",
+    "1000_1102/index.html",
+    "1150-1300/index.html",
+    "1150-1300/run_lapse.html",
+    "1150-1300/run_poops.html"
+  ]
+}

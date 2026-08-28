@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<style>:root{--fz-bg-image:url('background.png')}</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FLASH ZOON — PS4</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{min-height:100vh;background:#050505;color:#f5f5f5;font:15px/1.45 "Segoe UI",Tahoma,system-ui,sans-serif;position:relative;overflow:hidden}
+body::before{content:"";position:fixed;inset:0;background:var(--fz-bg-image) center/cover no-repeat;opacity:.72;filter:brightness(.55) contrast(1.05);z-index:0}
+body::after{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.68));z-index:0;pointer-events:none}
+#wrap{padding:24px 20px 30px;position:relative;z-index:1;max-width:980px;width:min(94vw,980px);margin:0 auto;min-height:100vh}
+#header{position:relative;overflow:hidden;padding:28px 22px 24px;margin-bottom:18px;background:linear-gradient(180deg,rgba(18,18,18,.96),rgba(8,8,8,.96));border:1px solid rgba(255,122,0,.42);border-radius:22px;box-shadow:0 18px 40px rgba(0,0,0,.5),0 0 26px rgba(255,122,0,.18),inset 0 1px 0 rgba(255,255,255,.05);text-align:center}
+#header::before{content:"";position:absolute;top:0;left:8%;right:8%;height:2px;background:#ff7a00;box-shadow:0 0 12px rgba(255,122,0,.75)}
+#header h1{font-size:clamp(44px,7vw,72px);line-height:1;font-weight:900;color:#fff;margin:0 0 9px;letter-spacing:-1px;text-shadow:0 0 18px rgba(255,122,0,.18)}
+.english-name{font-size:clamp(18px,3vw,28px);line-height:1.05;font-weight:800;letter-spacing:5px;color:#ff7a00;margin:0 0 10px;text-transform:uppercase}
+.sub{font-size:18px;color:#d8d8d8;font-weight:600;margin:0 0 14px}
+.sub span{color:#fff;font-weight:700}
+.neon-line{width:58%;height:1px;margin:18px auto;background:linear-gradient(90deg,transparent,#ff7a00,transparent);box-shadow:0 0 12px rgba(255,122,0,.45)}
+.phone::after{content:"GAME ZONE  •  PS4";display:inline-block;font-size:14px;letter-spacing:2px;color:#ff7a00;padding:7px 14px;border:1px solid rgba(255,122,0,.45);border-radius:999px;background:rgba(255,122,0,.07)}
+#state{background:linear-gradient(180deg,rgba(17,17,17,.96),rgba(8,8,8,.96));border:1px solid rgba(255,122,0,.28);box-shadow:0 14px 36px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.04);border-radius:16px;padding:18px 16px;text-align:center;font-size:21px;font-weight:800;color:#fff}
+.loading-wrapper{display:flex;align-items:center;justify-content:center;gap:14px}
+.loader{width:34px;height:34px;border-radius:50%;border:4px solid rgba(255,255,255,.10);border-top-color:#ff7a00;border-right-color:#ff9d35;box-shadow:0 0 10px rgba(255,122,0,.45);animation:spin .8s linear infinite;flex:0 0 auto}
+.loader.done{animation:none;border-color:#5bd493;box-shadow:0 0 12px rgba(91,212,147,.5)}
+.loader-dots{display:inline-flex;gap:6px;margin-left:6px}
+.loader-dots span{width:7px;height:7px;border-radius:50%;background:#ff7a00;box-shadow:0 0 10px rgba(255,122,0,.45);animation:dot 1.2s infinite ease-in-out}
+.loader-dots span:nth-child(2){animation-delay:.15s} .loader-dots span:nth-child(3){animation-delay:.3s}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes dot{0%,80%,100%{transform:scale(.6);opacity:.35}40%{transform:scale(1.15);opacity:1}}
+#out-container{display:none}
+#console{display:none}
+.small-details{margin-top:10px;color:#999;font-size:13px}
+.controls{margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px}
+.controls button,.controls label{font:700 14px "Segoe UI",Tahoma,sans-serif;color:#fff;background:#101010;border:1px solid rgba(255,122,0,.35);border-radius:10px;padding:9px 14px}
+.controls button{cursor:pointer}
+.controls button:hover{border-color:#ff7a00}
+.footer{position:fixed;bottom:12px;right:18px;z-index:2;font-size:12px;color:#666}
+@media(max-width:640px){#wrap{padding:14px 12px 20px}#header{padding:22px 15px 20px;border-radius:18px}.english-name{letter-spacing:3px}#state{font-size:18px}}
+</style>
+<link rel="stylesheet" href="flash-zoon.css">
+</head>
+<body>
+<div id="wrap">
+<div id="header">
+  <h1>فلاش زون</h1>
+  <div class="english-name">FLASH ZOON</div>
+  <div class="sub"><span>قسم الألعاب — PS4</span></div>
+  <div class="english-name">+9647877885582</div>
+  <div class="english-name">+9647802383692</div>
+  <div class="neon-line"></div>
+  <div class="phone"></div>
+</div>
+<div id="state"><div class="loading-wrapper"><div id="loader" class="loader"></div><span id="stateText">جارٍ التحقق من جهاز PS4<br><small>Checking firmware...</small></span><span class="loader-dots"><span></span><span></span><span></span></span></div></div>
+
+</div>
+<div class="footer">FLASH ZOON • GAME ZONE</div>
+<script>
+(function(){
+ var state=document.getElementById('stateText');
+ var loader=document.getElementById('loader');
+ var ua=navigator.userAgent||'';
+ var m=/PlayStation\s+4[\/ ]([0-9]+\.[0-9]+)/i.exec(ua);
+ if(!m){state.innerHTML='PS4 غير مكتشف<br><small>Open this page from the PS4 browser.</small>'; loader.classList.add('done'); return;}
+ var fw=parseFloat(m[1]);
+ var target=null;
+ if(fw>=5.00&&fw<=9.60) target='505_960/index.html';
+ else if(fw>=10.00&&fw<=11.02) target='1000_1102/index.html';
+ else if(fw>=11.50&&fw<=13.00) target='1150-1300/index.html';
+ else {state.innerHTML='Firmware غير مدعوم<br><small>Detected: '+m[1]+'</small>'; loader.classList.add('done'); return;}
+ state.innerHTML='Firmware '+m[1]+'<br><small>جارٍ فتح الواجهة المناسبة...</small>';
+ setTimeout(function(){location.replace(target);},900);
+})();
+</script>
+</body>
+</html>
